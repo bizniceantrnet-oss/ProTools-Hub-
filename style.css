@@ -1,0 +1,232 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Arial", sans-serif;
+    background:#088A85
+    color:white;
+    text-align:center;
+    min-height:100vh;
+}
+
+
+/* رأس الصفحة */
+header{
+    background:#1e293b;
+    padding:35px 20px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.3);
+}
+
+header h1{
+    font-size:32px;
+    margin-bottom:12px;
+    color:#10b981;
+}
+
+header p{
+    font-size:17px;
+    color:#cbd5e1;
+}
+
+
+/* الحاوية */
+.container{
+    width:90%;
+    max-width:650px;
+    margin:35px auto;
+}
+
+
+/* مربع الإدخال */
+input{
+    width:100%;
+    padding:16px;
+    font-size:18px;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    margin-bottom:20px;
+    background:#f8fafc;
+    color:#111827;
+}
+
+
+/* الأزرار */
+.buttons{
+    display:flex;
+    gap:15px;
+    justify-content:center;
+    margin-bottom:30px;
+}
+
+
+button{
+    padding:12px 30px;
+    border:none;
+    border-radius:12px;
+    background:#10b981;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+
+button:hover{
+    transform:scale(1.05);
+    background:#059669;
+}
+
+
+/* مكان النتائج */
+.results{
+    background:#1e293b;
+    border-radius:15px;
+    padding:20px;
+    min-height:150px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.2);
+}
+
+
+/* كل نتيجة */
+.result-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+    background:#334155;
+    margin:12px 0;
+    padding:15px;
+    border-radius:12px;
+    font-size:20px;
+    word-break:break-word;
+}
+
+
+/* زر النسخ */
+.copy-btn{
+    background:#3b82f6;
+    padding:8px 15px;
+    font-size:14px;
+}
+
+
+.copy-btn:hover{
+    background:#2563eb;
+}
+
+
+/* رسالة فارغة */
+.empty{
+    color:#94a3b8;
+    font-size:16px;
+}
+
+
+/* أسفل الصفحة */
+footer{
+    margin-top:50px;
+    padding:20px;
+    color:#94a3b8;
+    background:#1e293b;
+}
+
+
+/* تحسين الهاتف */
+@media(max-width:600px){
+
+    header h1{
+        font-size:25px;
+    }
+
+
+    .buttons{
+        flex-direction:column;
+    }
+
+
+    button{
+        width:100%;
+    }
+
+
+    .result-item{
+        flex-direction:column;
+    }
+.menu {
+    background: #222;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 15px;
+    border-radius: 10px;
+}
+
+.menu a:hover {
+    background: #555;
+}
+.menu {
+
+background:#222;
+padding:15px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+
+}
+
+
+.menu a {
+
+color:white;
+text-decoration:none;
+font-size:18px;
+
+}
+
+
+.menu a:hover {
+
+color:#00ffff;
+
+}
+
+
+
+.articles {
+
+width:90%;
+margin:auto;
+
+}
+
+
+
+.article {
+
+background:#eee;
+padding:20px;
+margin:20px 0;
+border-radius:15px;
+
+}
+
+
+.article a {
+
+color:blue;
+text-decoration:none;
+
+}
