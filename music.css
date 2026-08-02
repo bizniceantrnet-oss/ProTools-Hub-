@@ -1,0 +1,507 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+
+body{
+
+    min-height:100vh;
+    color:white;
+    background:#020617;
+    overflow-x:hidden;
+
+}
+
+
+
+/* الخلفية */
+
+.background{
+
+    position:fixed;
+    inset:0;
+    z-index:-2;
+
+    background:
+    radial-gradient(circle at 20% 20%,#0e7490,transparent 30%),
+    radial-gradient(circle at 80% 70%,#0891b2,transparent 25%),
+    linear-gradient(135deg,#020617,#0f172a);
+
+}
+
+
+
+.background::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:300px;
+    height:300px;
+
+    background:#18e0c4;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    animation:moveLight 8s infinite alternate;
+
+}
+
+
+
+@keyframes moveLight{
+
+    from{
+        transform:translate(0,0);
+    }
+
+    to{
+        transform:translate(250px,200px);
+    }
+
+}
+
+
+
+/* الشعار */
+
+header{
+
+    padding:30px;
+    text-align:center;
+
+}
+
+
+.logo{
+
+    font-size:32px;
+    font-weight:bold;
+    color:#18e0c4;
+
+    text-shadow:
+    0 0 15px #18e0c4;
+
+}
+
+
+
+/* الصفحة */
+
+.hero{
+
+    width:90%;
+    max-width:700px;
+    margin:auto;
+    text-align:center;
+
+}
+
+
+
+.hero h1{
+
+    font-size:38px;
+    margin-top:20px;
+
+}
+
+
+.hero p{
+
+    color:#cbd5e1;
+    margin:15px 0 30px;
+
+}
+
+
+
+/* البطاقات */
+
+.studio-card,
+.result-card{
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(20px);
+
+    border:1px solid rgba(255,255,255,.1);
+
+    border-radius:30px;
+
+    padding:30px;
+
+    margin-bottom:30px;
+
+    box-shadow:
+    0 0 40px rgba(0,0,0,.4);
+
+}
+
+
+
+h2{
+
+    margin:20px 0;
+
+}
+
+
+
+/* مربع الكتابة */
+
+textarea{
+
+    width:100%;
+    height:160px;
+
+    border:none;
+    outline:none;
+
+    border-radius:25px;
+
+    padding:20px;
+
+    font-size:18px;
+
+    resize:none;
+
+}
+
+
+
+/* العداد */
+
+.word-count{
+
+    text-align:right;
+    color:#94a3b8;
+    margin-top:10px;
+
+}
+
+
+
+/* الاختيارات */
+
+.options,
+.voices{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+
+
+/* الأزرار */
+
+.option,
+.voice{
+
+    background:#0f2d45;
+
+    color:white;
+
+    border:1px solid #18e0c4;
+
+    padding:15px 20px;
+
+    border-radius:20px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.option:hover,
+.voice:hover,
+.active{
+
+    background:#18e0c4;
+
+    color:#001;
+
+    transform:scale(1.08);
+
+}
+
+
+
+/* زر الإنشاء */
+
+#create-song{
+
+    margin-top:30px;
+
+    width:100%;
+
+    padding:20px;
+
+    border:none;
+
+    border-radius:50px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    background:#18e0c4;
+
+    color:#001;
+
+    box-shadow:
+    0 0 25px #18e0c4;
+
+    transition:.3s;
+
+}
+
+
+
+#create-song:hover{
+
+    transform:scale(1.05);
+
+}
+
+
+
+/* الغلاف */
+
+.cover{
+
+    height:220px;
+
+    border-radius:25px;
+
+    background:#020617;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:80px;
+
+}
+
+
+
+/* أزرار المشغل */
+
+.player button{
+
+    margin:15px 5px;
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    border:none;
+
+    cursor:pointer;
+
+    font-size:20px;
+
+}
+
+
+
+/* موجات الصوت */
+
+.sound-wave{
+
+    position:fixed;
+
+    bottom:30px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    opacity:.3;
+
+    z-index:-1;
+
+}
+
+
+
+.sound-wave span{
+
+    width:9px;
+
+    height:40px;
+
+    background:#18e0c4;
+
+    border-radius:20px;
+
+    animation:musicWave 1.2s infinite ease-in-out;
+
+}
+
+
+
+.sound-wave span:nth-child(2){animation-delay:.1s;}
+.sound-wave span:nth-child(3){animation-delay:.2s;}
+.sound-wave span:nth-child(4){animation-delay:.3s;}
+.sound-wave span:nth-child(5){animation-delay:.4s;}
+.sound-wave span:nth-child(6){animation-delay:.5s;}
+.sound-wave span:nth-child(7){animation-delay:.6s;}
+.sound-wave span:nth-child(8){animation-delay:.7s;}
+.sound-wave span:nth-child(9){animation-delay:.8s;}
+.sound-wave span:nth-child(10){animation-delay:.9s;}
+.sound-wave span:nth-child(11){animation-delay:1s;}
+.sound-wave span:nth-child(12){animation-delay:1.1s;}
+
+
+
+@keyframes musicWave{
+
+    0%,100%{
+        height:30px;
+    }
+
+    50%{
+        height:130px;
+    }
+
+}
+
+
+
+/* دائرة الطاقة */
+
+.energy-circle{
+
+    position:fixed;
+
+    top:50%;
+    left:50%;
+
+    width:180px;
+    height:180px;
+
+    margin-left:-90px;
+    margin-top:-90px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.5s;
+
+}
+
+
+
+.energy-circle.active{
+
+    opacity:1;
+
+    animation:energyPulse 1.5s infinite;
+
+}
+
+
+
+.energy-core{
+
+    width:100px;
+    height:100px;
+
+    border-radius:50%;
+
+    background:#18e0c4;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:45px;
+
+    box-shadow:
+    0 0 30px #18e0c4,
+    0 0 80px #18e0c4;
+
+}
+
+
+
+@keyframes energyPulse{
+
+    0%{
+
+        transform:scale(1);
+
+    }
+
+
+    50%{
+
+        transform:scale(1.25);
+
+    }
+
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+
+
+/* الهاتف */
+
+@media(max-width:600px){
+
+    .hero h1{
+
+        font-size:30px;
+
+    }
+
+
+    .logo{
+
+        font-size:26px;
+
+    }
+
+}
