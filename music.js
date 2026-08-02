@@ -1,8 +1,9 @@
+// ===============================
 // عداد الكلمات
+// ===============================
 
 const lyrics = document.getElementById("lyrics");
 const count = document.getElementById("count");
-
 
 lyrics.addEventListener("input", function(){
 
@@ -14,9 +15,7 @@ lyrics.addEventListener("input", function(){
 
     } else {
 
-        let words = text.split(/\s+/);
-
-        count.innerHTML = words.length;
+        count.innerHTML = text.split(/\s+/).length;
 
     }
 
@@ -24,12 +23,11 @@ lyrics.addEventListener("input", function(){
 
 
 
-
-
+// ===============================
 // اختيار نوع الأغنية
+// ===============================
 
 const options = document.querySelectorAll(".option");
-
 
 options.forEach(function(button){
 
@@ -41,7 +39,6 @@ options.forEach(function(button){
 
         });
 
-
         button.classList.add("active");
 
     });
@@ -51,11 +48,11 @@ options.forEach(function(button){
 
 
 
-
+// ===============================
 // اختيار الصوت
+// ===============================
 
 const voices = document.querySelectorAll(".voice");
-
 
 voices.forEach(function(button){
 
@@ -67,7 +64,6 @@ voices.forEach(function(button){
 
         });
 
-
         button.classList.add("active");
 
     });
@@ -77,52 +73,108 @@ voices.forEach(function(button){
 
 
 
-
-// زر إنشاء الأغنية
+// ===============================
+// إنشاء الأغنية وربط السيرفر
+// ===============================
 
 const createButton = document.getElementById("create-song");
 
 const energy = document.querySelector(".energy-circle");
 
 
+createButton.addEventListener("click", async function(){
 
-createButton.addEventListener("click", function(){
-
-
-    // تشغيل تأثير الطاقة
 
     energy.classList.add("active");
 
 
     createButton.innerHTML = "🎵 Mixing Beat...";
-
     createButton.disabled = true;
 
 
 
-    setTimeout(function(){
-
-        createButton.innerHTML = "🎤 Recording Voice...";
-
-
-    },2000);
+    const selectedStyle = document.querySelector(".option.active");
+    const selectedVoice = document.querySelector(".voice.active");
 
 
 
+    const songData = {
 
-    setTimeout(function(){
+        lyrics: lyrics.value,
+
+        style: selectedStyle 
+        ? selectedStyle.innerText 
+        : "Pop",
+
+        voice: selectedVoice 
+        ? selectedVoice.innerText 
+        : "AI Voice"
+
+    };
+
+
+
+    try{
+
+
+        const response = await fetch(
+
+            "https://ai-music-server.onrender.com/create-song",
+
+            {
+
+                method:"POST",
+
+                headers:{
+
+                    "Content-Type":"application/json"
+
+                },
+
+                body:JSON.stringify(songData)
+
+            }
+
+        );
+
+
+
+        const result = await response.json();
+
+
+
+        console.log(result);
+
 
 
         createButton.innerHTML = "✨ Song Ready";
 
 
-        energy.classList.remove("active");
 
+    }
+
+
+    catch(error){
+
+
+        console.log(error);
+
+
+        createButton.innerHTML = "❌ Server Error";
+
+
+    }
+
+
+
+    setTimeout(function(){
+
+        energy.classList.remove("active");
 
         createButton.disabled = false;
 
 
-    },5000);
+    },3000);
 
 
 
